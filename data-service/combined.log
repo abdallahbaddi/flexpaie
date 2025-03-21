@@ -1,0 +1,39 @@
+{"level":"info","message":"Connected to the database successfully","timestamp":"2025-03-20T15:07:34.330Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-03-20T15:07:34.338Z"}
+{"level":"info","message":"Connected to the database successfully","timestamp":"2025-03-20T15:52:27.831Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-03-20T15:52:27.840Z"}
+{"level":"info","message":"Connected to the database successfully","timestamp":"2025-03-20T15:52:45.771Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-03-20T15:52:45.783Z"}
+{"level":"info","message":"Connected to the database successfully","timestamp":"2025-03-20T16:24:06.049Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-03-20T16:24:06.061Z"}
+{"level":"info","message":"Connected to the database successfully","timestamp":"2025-03-20T16:24:16.354Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-03-20T16:24:16.363Z"}
+{"level":"info","message":"Connected to the database successfully","timestamp":"2025-03-20T16:24:26.749Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-03-20T16:24:26.758Z"}
+{"level":"info","message":"Connected to the database successfully","timestamp":"2025-03-20T16:24:48.696Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-03-20T16:24:48.705Z"}
+{"level":"info","message":"Connected to the database successfully","timestamp":"2025-03-20T16:25:01.972Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-03-20T16:25:01.981Z"}
+{"level":"info","message":"Connected to the database successfully","timestamp":"2025-03-20T16:26:48.711Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-03-20T16:26:48.719Z"}
+{"level":"error","timestamp":"2025-03-20T16:27:07.769Z"}
+{"level":"info","message":"Connected to the database successfully","timestamp":"2025-03-20T16:35:25.266Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-03-20T16:35:25.276Z"}
+{"level":"info","message":"Connected to the database successfully","timestamp":"2025-03-20T16:35:30.118Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-03-20T16:35:30.126Z"}
+{"level":"info","message":"Connected to the database successfully","timestamp":"2025-03-20T16:35:41.361Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-03-20T16:35:41.369Z"}
+{"level":"info","message":"Connected to the database successfully","timestamp":"2025-03-20T16:35:45.408Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-03-20T16:35:45.417Z"}
+{"level":"info","message":"Connected to the database successfully","timestamp":"2025-03-20T16:39:09.232Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-03-20T16:39:09.241Z"}
+{"level":"info","message":"Connected to the database successfully","timestamp":"2025-03-20T16:40:35.753Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-03-20T16:40:35.763Z"}
+{"level":"info","message":"Connected to the database successfully","timestamp":"2025-03-20T16:46:14.342Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-03-20T16:46:14.351Z"}
+{"level":"info","message":"Connected to the database successfully","timestamp":"2025-03-20T16:47:33.310Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-03-20T16:47:33.319Z"}
+{"level":"error","message":"TypeError: Cannot read properties of undefined (reading 'findMany')\n    at Object.getAllCompanies (D:\\work\\noflexi\\data-service\\src\\services\\companyService.js:7:27)\n    at D:\\work\\noflexi\\data-service\\src\\routes\\companies.js:9:44\n    at Layer.handle [as handle_request] (D:\\work\\noflexi\\data-service\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (D:\\work\\noflexi\\data-service\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at Route.dispatch (D:\\work\\noflexi\\data-service\\node_modules\\express\\lib\\router\\route.js:119:3)\n    at Layer.handle [as handle_request] (D:\\work\\noflexi\\data-service\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at D:\\work\\noflexi\\data-service\\node_modules\\express\\lib\\router\\index.js:284:15\n    at Function.process_params (D:\\work\\noflexi\\data-service\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (D:\\work\\noflexi\\data-service\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at Function.handle (D:\\work\\noflexi\\data-service\\node_modules\\express\\lib\\router\\index.js:175:3)","timestamp":"2025-03-20T16:50:15.821Z"}
+{"level":"info","message":"Connected to the database successfully","timestamp":"2025-03-20T23:38:03.440Z"}
+{"level":"info","message":"Server running on port 3001","timestamp":"2025-03-20T23:38:03.474Z"}
+{"level":"error","timestamp":"2025-03-20T23:56:33.750Z"}

@@ -1,0 +1,36 @@
+{
+  "name": "noflexi-data-service",
+  "version": "1.0.0",
+  "description": "Microservice pour la gestion des données de Noflexi",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "jest",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:deploy": "prisma migrate deploy",
+    "seed": "node src/utils/seedData.js",
+    "docker:build": "docker build -t noflexi-data-service .",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.5.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.1",
+    "express": "^4.18.2",
+    "helmet": "^7.1.0",
+    "joi": "^17.12.1",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "pg": "^8.11.3",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.3",
+    "prisma": "^6.5.0",
+    "supertest": "^6.3.4"
+  }
+}
