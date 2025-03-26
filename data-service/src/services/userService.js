@@ -13,6 +13,7 @@ const userService = {
         company: true,
         createdAt: true,
         updatedAt: true,
+        password: true, // Exclude password for security
         // Exclude password for security
       }
     });
