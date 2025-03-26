@@ -49,6 +49,19 @@ router.put('/:id', validateUserUpdate, async (req, res, next) => {
   }
 });
 
+// Update user
+router.patch('/:id', validateUserUpdate, async (req, res, next) => {
+  try {
+    const user = await userService.updateUser(req.params.id, req.body);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.json(user);
+  } catch (error) {
+    next(error);
+  }
+});
+
 // Delete user
 router.delete('/:id', async (req, res, next) => {
   try {

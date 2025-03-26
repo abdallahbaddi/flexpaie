@@ -53,9 +53,10 @@ const userService = {
   // Create user with company
   async createUser(userData) {
     // S'assurer que companyId est fourni
-    if (!userData.companyId) {
+
+    /*if (!userData.companyId) {
       throw new Error('L\'ID de l\'entreprise est requis');
-    }
+    }*/
     
     return prisma.user.create({
       data: userData,
@@ -80,9 +81,16 @@ const userService = {
         id: true,
         email: true,
         name: true,
-        role: true,
+        role: {
+          select: {
+            id: true,
+            name: true,
+            description: true
+          }
+        },
+        company: true, // Ajouter company dans la sélection
         createdAt: true,
-        updatedAt: true,
+        updatedAt: true
       }
     });
   },

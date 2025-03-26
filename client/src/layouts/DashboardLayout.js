@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function DashboardLayout({ children, user, onLogout, activeTab, setActiveTab }) {
   const router = useRouter();
-  
+
   // Navigation helper
   const navigateTo = (path) => {
     router.push(`/dashboard${path === 'overview' ? '' : '/' + path}`);

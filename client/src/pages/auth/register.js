@@ -62,26 +62,16 @@ export default function Register() {
     try {
       setLoading(true);
       
-      // Récupération de l'ID du rôle SALARIE par défaut
+      // Récupération de l'ID du rôle ADMIN par défaut
       const roleResponse = await fetch('http://localhost:3001/api/roles');
       const roles = await roleResponse.json();
-      const salarieRole = roles.find(role => role.name === 'SALARIE');
+      const adminRole = roles.find(role => role.name === 'ADMIN');
       
-      if (!salarieRole) {
-        throw new Error('Rôle SALARIE introuvable');
+      if (!adminRole) {
+        throw new Error('Rôle ADMIN introuvable');
       }
       
-      // Récupération de l'entreprise par défaut
-      const companyResponse = await fetch('http://localhost:3001/api/companies');
-      const companies = await companyResponse.json();
-      
-      if (!companies || companies.length === 0) {
-        throw new Error('Aucune entreprise disponible');
-      }
-      
-      const defaultCompany = companies[0]; // Utiliser la première entreprise comme défaut
-      
-      // Envoi des données au service API
+      // Envoi des données au service API sans companyId
       const response = await fetch('http://localhost:3001/api/users', {
         method: 'POST',
         headers: {
@@ -91,8 +81,8 @@ export default function Register() {
           name: formData.name,
           email: formData.email,
           password: formData.password,
-          roleId: salarieRole.id,
-          companyId: defaultCompany.id
+          roleId: adminRole.id
+          // Pas de companyId
         }),
       });
 
@@ -104,9 +94,9 @@ export default function Register() {
       // Succès
       setSuccess('Inscription réussie! Redirection vers la page de connexion...');
       
-      // Redirection après 2 secondes
+      // Redirection vers la page de connexion
       setTimeout(() => {
-        router.push('/login');
+        router.push('/auth/login');
       }, 2000);
       
     } catch (error) {

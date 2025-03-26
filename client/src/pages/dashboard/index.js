@@ -35,6 +35,18 @@ export default function Dashboard() {
     }
   }, [router]);
 
+  useEffect(() => {
+    const userData = localStorage.getItem('user');
+    if (userData) {
+      const user = JSON.parse(userData);
+      
+      // Si l'utilisateur est ADMIN et n'a pas d'entreprise, rediriger vers la création d'entreprise
+      if (user.role === 'ADMIN' && !user.companyId) {
+        router.push('/dashboard/company/create');
+      }
+    }
+  }, []);
+
   const handleLogout = () => {
     // Supprimer les données d'authentification
     localStorage.removeItem('token');

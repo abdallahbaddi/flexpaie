@@ -21,7 +21,8 @@ const userUpdateSchema = Joi.object({
   email: Joi.string().email(),
   password: Joi.string().min(8),
   name: Joi.string().allow(null, ''),
-  roleId: Joi.string()
+  roleId: Joi.string(),
+  companyId: Joi.string(),
 }).min(1);
 
 // Role validation schemas

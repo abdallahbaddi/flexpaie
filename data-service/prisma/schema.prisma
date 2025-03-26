@@ -16,8 +16,8 @@ model User {
   updatedAt DateTime @updatedAt
   role      Role     @relation(fields: [roleId], references: [id])
   roleId    String
-  company   Company  @relation(fields: [companyId], references: [id])
-  companyId String
+  company   Company? @relation(fields: [companyId], references: [id])
+  companyId String?
 }
 
 model Role {
