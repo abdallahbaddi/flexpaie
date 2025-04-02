@@ -25,8 +25,8 @@ export default function Company() {
       setUser(parsedUser);
       
       // Si l'utilisateur est ADMIN et a une entreprise, charger les détails
-      if (parsedUser.role === 'ADMIN' && parsedUser.company?.id) {
-        fetchCompanyDetails(parsedUser.company.id);
+      if (parsedUser.role === 'ADMIN' && parsedUser.companyId) {
+        fetchCompanyDetails(parsedUser.companyId);
       }
     }
   }, []);
@@ -75,7 +75,7 @@ export default function Company() {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:3001/api/companies/${user.company.id}`, {
+      const response = await fetch(`http://localhost:3001/api/companies/${user.companyId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -92,12 +92,12 @@ export default function Company() {
       setCompanySuccess('Informations de l\'entreprise mises à jour avec succès');
       
       // Mettre à jour les informations de l'entreprise dans le localStorage
-      const userData = JSON.parse(localStorage.getItem('user'));
+      /*const userData = JSON.parse(localStorage.getItem('user'));
       userData.company.name = companyData.name;
-      localStorage.setItem('user', JSON.stringify(userData));
+      localStorage.setItem('user', JSON.stringify(userData));*/
       
       // Mettre à jour l'état de l'utilisateur
-      setUser(userData);
+      //setUser(userData);
       
     } catch (error) {
       setCompanyError(error.message);

@@ -93,7 +93,9 @@ export default function Dashboard() {
               </div>
               <div>
                 <h3 className="text-sm font-medium text-gray-500">Votre rôle</h3>
-                <p className="text-lg font-semibold text-gray-800">{user?.role || 'Non défini'}</p>
+                <p className="text-lg font-semibold text-gray-800">
+                  {typeof user?.role === 'object' ? user?.role.name : user?.role || 'Non défini'}
+                </p>
               </div>
             </div>
           </div>

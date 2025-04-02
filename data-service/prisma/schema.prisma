@@ -16,8 +16,11 @@ model User {
   updatedAt DateTime @updatedAt
   role      Role     @relation(fields: [roleId], references: [id])
   roleId    String
+  // Relation with Company
   company   Company? @relation(fields: [companyId], references: [id])
   companyId String?
+  // Relation with Employee
+  employee  Employee? @relation // One-to-one relation with Employee
 }
 
 model Role {
@@ -40,4 +43,57 @@ model Company {
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
   users           User[]
+  employees       Employee[] // One-to-many relation with Employee
+}
+
+model Employee {
+  id                  String   @id @default(cuid()) // Unique identifier
+  nationalId          String   @unique             // National Identity Card Number
+  lastName            String                        // Last name
+  firstName           String                        // First name
+  birthDate           DateTime                      // Date of birth
+  birthPlace          String                        // Place of birth
+  gender              String                        // Gender (Male/Female/Other)
+  maritalStatus       String                        // Marital status (Single, Married, Divorced, Widowed)
+  childrenCount       Int       @default(0)         // Number of dependent children
+  address             String?                       // Full address
+  phone               String?                       // Phone number
+  email               String?                       // Email address
+
+  // Professional information
+  employeeNumber      String   @unique             // Internal employee number
+  hireDate            DateTime                      // Date of hire
+  jobTitle            String                        // Job title
+  department          String?                       // Department or service
+  contractType        String                        // Contract type (Permanent, Temporary, Internship, etc.)
+  baseSalary          Float                         // Gross base salary
+  paymentMethod       String                        // Payment method (Check, Bank transfer, Cash)
+  bankName            String?                       // Bank name (if payment is by transfer)
+  bankAccount         String?                       // Bank account number
+  socialSecurityNumber String?                      // Social Security Number
+  healthInsuranceNumber String?                     // Health Insurance Number
+  retirementFundNumber String?                      // Retirement Fund Number
+
+  // Tax and social data
+  socialSecurityRate  Float?                        // Social Security contribution rate
+  healthInsuranceRate Float?                        // Health Insurance contribution rate
+  retirementFundRate  Float?                        // Retirement Fund contribution rate
+  incomeTax           Float?                        // Monthly income tax amount
+  benefitsInKind      String?                       // List of benefits in kind
+
+  // Other information
+  terminationDate     DateTime?                     // End of contract date
+  terminationReason   String?                       // Reason for termination
+  status              String   @default("Active")   // Active/Inactive status
+
+  // Relation with the Company
+  company             Company  @relation(fields: [companyId], references: [id])
+  companyId           String
+
+  // Relation with User
+  user                User?     @relation(fields: [userId], references: [id])
+  userId              String?   @unique // Ensure one-to-one relation
+
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
 }

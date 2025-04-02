@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const userService = require('../services/userService');
 const { validateUserCreate, validateUserUpdate } = require('../utils/validators');
+const employeeService = require('../services/employeeService');
 
 // Get all users
 router.get('/', async (req, res, next) => {
@@ -77,6 +78,20 @@ router.get('/role/:roleId', async (req, res, next) => {
   try {
     const users = await userService.getUsersByRole(req.params.roleId);
     res.json(users);
+  } catch (error) {
+    next(error);
+  }
+});
+
+// Route pour créer un utilisateur et un employé
+router.post('/employees-with-user'/*, validateUserCreate*/, async (req, res, next) => {
+  try {
+    const { user, employee } = req.body;
+
+    // Appeler le service pour créer l'utilisateur et l'employé
+    const result = await employeeService.createEmployeeWithUser(user, employee);
+
+    res.status(201).json(result);
   } catch (error) {
     next(error);
   }

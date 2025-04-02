@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import DashboardLayout from '../../layouts/DashboardLayout';
+import Link from 'next/link';
 
 export default function Employees() {
   const [employees, setEmployees] = useState([]);
@@ -20,13 +21,13 @@ export default function Employees() {
       const user = JSON.parse(userData);
       const token = localStorage.getItem('token');
       
-      if (!user.company?.id) {
+      if (!user.companyId === null) {
         setError('Aucune entreprise associée à votre compte');
         setLoading(false);
         return;
       }
       
-      const response = await fetch(`http://localhost:3001/api/companies/${user.company.id}/users`, {
+      const response = await fetch(`http://localhost:3001/api/companies/${user.companyId}/users`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -55,12 +56,14 @@ export default function Employees() {
       <div className="bg-white rounded-lg shadow p-6">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-xl font-semibold text-gray-800">Liste des employés</h2>
-          <button className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition flex items-center">
-            <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
-            </svg>
-            Ajouter un employé
-          </button>
+          <Link href="/dashboard/add-employee">
+            <span className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition flex items-center">
+              <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
+              </svg>
+              Ajouter un employé
+            </span>
+          </Link>
         </div>
         
         {error && (
