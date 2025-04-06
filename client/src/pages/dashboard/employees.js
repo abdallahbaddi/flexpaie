@@ -27,7 +27,7 @@ export default function Employees() {
         return;
       }
       
-      const response = await fetch(`http://localhost:3001/api/companies/${user.companyId}/users`, {
+      const response = await fetch(`http://localhost:3001/api/employees/company/${user.companyId}`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -117,7 +117,7 @@ export default function Employees() {
                             {employee.name?.charAt(0) || 'U'}
                           </div>
                           <div className="ml-4">
-                            <div className="text-sm font-medium text-gray-900">{employee.name || 'N/A'}</div>
+                            <div className="text-sm font-medium text-gray-900">{employee.lastName + ' '+ employee.firstName || 'N/A'}</div>
                           </div>
                         </div>
                       </td>
@@ -132,7 +132,7 @@ export default function Employees() {
                               ? 'bg-green-100 text-green-800' 
                               : 'bg-blue-100 text-blue-800'
                         }`}>
-                          {employee.role?.name || 'N/A'}
+                          {employee.user?.role?.name || 'N/A'}
                         </span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">

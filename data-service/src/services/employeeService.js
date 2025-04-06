@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 
 const employeeService = {
   // Créer un utilisateur et un employé
-  async createEmployeeWithUser(userData, employeeData) {
+  async createEmployeeWithUser(userData, employeeData, companyData) {
     try {
       // Vérifier si l'email existe déjà
       const existingUser = await prisma.user.findUnique({
@@ -36,13 +36,59 @@ const employeeService = {
             birthDate: new Date(employeeData.birthDate), // Convertir en objet Date
             hireDate: new Date(employeeData.hireDate),   // Convertir en objet Date
             userId : newUser.id, // Associer l'utilisateur à l'employé
-            companyId : employeeData.company.companyId, // Associer l'employé à l'entreprise
+            companyId : companyData.companyId, // Associer l'employé à l'entreprise
         },
         });
 
       return { user: newUser, employee: newEmployee };
     } catch (error) {
       console.error('Erreur lors de la création de l\'employé et de l\'utilisateur:', error);
+      throw error;
+    }
+  },
+  // récupérer l'employé par ID
+  async getEmployeeById(id) {
+    try {
+      const employee = await prisma.employee.findUnique({
+        where: { id },
+        include: {
+          user: {
+            select: {
+              id: true,
+              email: true,
+              name: true,
+              role: true,
+              createdAt: true,
+            },
+          },
+        },
+      });
+      return employee;
+    } catch (error) {
+      console.error('Erreur lors de la récupération de l\'employé:', error);
+      throw error;
+    }
+  },
+  // Récupérer tous les employés d'une entreprise
+  async getCompanyEmployees(companyId) {
+    try {
+      const employees = await prisma.employee.findMany({
+        where: { companyId },
+        include: {
+          user: {
+            select: {
+              id: true,
+              email: true,
+              name: true,
+              role: true,
+              createdAt: true,
+            },
+          },
+        },
+      });
+      return employees;
+    } catch (error) {
+      console.error('Erreur lors de la récupération des employés:', error);
       throw error;
     }
   },

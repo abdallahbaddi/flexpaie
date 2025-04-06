@@ -62,6 +62,27 @@ const companyUpdateSchema = Joi.object({
   employeeCount: Joi.number().integer().min(1).allow(null)
 }).min(1);
 
+// Schéma de validation pour la création d'employé
+const employeeCreateSchema = validate(Joi.object({
+  name: Joi.string().required(),
+  email: Joi.string().email().required(),
+  phone: Joi.string().allow(null, ''),
+  position: Joi.string().allow(null, ''),
+  hireDate: Joi.date().iso().required(),
+  companyId: Joi.string().required()
+}));
+
+
+// Schéma de validation pour la mise à jour d'employé
+const employeeUpdateSchema = validate(Joi.object({
+  name: Joi.string(),
+  email: Joi.string().email(),
+  phone: Joi.string().allow(null, ''),
+  position: Joi.string().allow(null, ''),
+  hireDate: Joi.date().iso(),
+  companyId: Joi.string()
+}).min(1));
+
 // Validation middleware
 const validateUserCreate = validate(userCreateSchema);
 const validateUserUpdate = validate(userUpdateSchema);
@@ -70,6 +91,8 @@ const validateRoleUpdate = validate(roleUpdateSchema);
 const validateLogin = validate(loginSchema);
 const validateCompanyCreate = validate(companyCreateSchema);
 const validateCompanyUpdate = validate(companyUpdateSchema);
+const validateEmployeeCreate = validate(employeeCreateSchema);
+const validateEmployeeUpdate = validate(employeeUpdateSchema);
 
 module.exports = {
   validateLogin,
@@ -78,5 +101,7 @@ module.exports = {
   validateRoleCreate,
   validateRoleUpdate,
   validateCompanyCreate,
-  validateCompanyUpdate
+  validateCompanyUpdate,
+  validateEmployeeCreate,
+  validateEmployeeUpdate
 };

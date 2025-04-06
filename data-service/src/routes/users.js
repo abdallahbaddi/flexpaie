@@ -86,10 +86,10 @@ router.get('/role/:roleId', async (req, res, next) => {
 // Route pour créer un utilisateur et un employé
 router.post('/employees-with-user'/*, validateUserCreate*/, async (req, res, next) => {
   try {
-    const { user, employee } = req.body;
+    const { user, employee, company } = req.body;
 
     // Appeler le service pour créer l'utilisateur et l'employé
-    const result = await employeeService.createEmployeeWithUser(user, employee);
+    const result = await employeeService.createEmployeeWithUser(user, employee, company);
 
     res.status(201).json(result);
   } catch (error) {

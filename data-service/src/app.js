@@ -9,6 +9,7 @@ const userRoutes = require('./routes/users');
 const roleRoutes = require('./routes/roles');
 const authRoutes = require('./routes/auth'); // Nouvelle route
 const companyRoutes = require('./routes/companies');
+const employeeRoutes = require('./routes/employees');
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/roles', roleRoutes);
 app.use('/api/auth', authRoutes); // Ajout des routes d'authentification
 app.use('/api/companies', companyRoutes);
+app.use('/api/employees', employeeRoutes);
 
 // Health check endpoint
 app.get('/health', (req, res) => {
